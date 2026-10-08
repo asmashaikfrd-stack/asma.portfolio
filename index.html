@@ -40,8 +40,34 @@ h2{font-size:clamp(34px,5vw,62px)}
 @media (max-width:760px){
   .st{align-items:flex-end;padding-block:24px 84px}
   .cap{background:linear-gradient(transparent,rgba(7,8,11,.85) 30%);padding-top:36px;max-width:100%}
-  .hint{display:none}.dots{display:none}
+  .hint{display:none}.dots{display:none}.top span{display:none}
 }
+
+.content{position:relative;z-index:2;padding-block:84px 8px}
+.content .eh{margin-bottom:30px}
+.content h2{max-width:20ch}
+.panel{background:rgba(9,11,16,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid #232831;border-radius:20px;padding:clamp(20px,3vw,34px)}
+.about{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px}
+.about p{margin:0 0 16px;color:#C9D0D8}
+.about dl{margin:0;display:grid;gap:16px}.about dt{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--s1)}.about dd{margin:4px 0 0;color:#C9D0D8;font-size:15.5px}
+.jobs{display:grid;gap:22px}
+.job h3{font-family:var(--display);font-size:clamp(22px,2.6vw,30px);margin:0;letter-spacing:-.02em}
+.job .meta{display:flex;flex-wrap:wrap;gap:6px 18px;font:400 13.5px var(--mono);color:var(--muted);margin:8px 0 18px}
+.job .meta b{color:var(--s2);font-weight:500}
+.job p{margin:0;color:#C9D0D8;text-align:justify;hyphens:auto}
+.projs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
+.proj h3{font-family:var(--display);font-size:22px;margin:0 0 10px;letter-spacing:-.02em}
+.proj p{margin:0;color:#C9D0D8;font-size:15.5px}
+.proj .chips{margin-top:16px}
+.sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px 28px}
+.sk h3{font:500 12.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--s3);margin:0 0 8px}
+.sk p{margin:0;color:#C9D0D8;font-size:15px;line-height:1.75}
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+.edu h3{font-family:var(--display);font-size:20px;margin:0 0 6px;letter-spacing:-.01em}
+.edu p{margin:0;color:#C9D0D8;font-size:15.5px}
+.edu .tag{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--s4);display:block;margin-bottom:8px}
+@media (max-width:760px){.about{grid-template-columns:1fr}.content{padding-block:60px 8px}}
+#cv{transition:opacity .7s ease}
 </style>
 
 <canvas id="cv" aria-hidden="true"></canvas>
@@ -50,41 +76,114 @@ h2{font-size:clamp(34px,5vw,62px)}
 <div class="hint" id="hint">scroll · move your cursor through the particles</div>
 
 <main>
-<section class="st" id="s0"><div class="cap" style="--c:var(--s0)">
+<section class="st" id="s0" data-stage="0"><div class="cap" style="--c:var(--s0)">
   <p class="n">Asma Shaik</p>
   <h1>I build AI that answers from evidence.</h1>
   <p>Applied AI Engineer working on RAG, agents and the MLOps behind them. Everything behind this text is made of particles. Scroll and watch them rebuild into the work.</p>
 </div></section>
 
-<section class="st" id="s1"><div class="cap" style="--c:var(--s1)">
+<section class="st" id="s1" data-stage="1"><div class="cap" style="--c:var(--s1)">
   <p class="n">Models</p>
   <h2>I build and tune models.</h2>
   <p>Fine-tuning with LoRA and PEFT, PyTorch training, and the feature and training pipelines that make a result reproducible instead of lucky.</p>
   <div class="chips"><i>PyTorch</i><i>LoRA / PEFT</i><i>Hugging Face</i><i>scikit-learn</i><i>XGBoost</i></div>
 </div></section>
 
-<section class="st" id="s2"><div class="cap" style="--c:var(--s2)">
+<section class="st" id="s2" data-stage="2"><div class="cap" style="--c:var(--s2)">
   <p class="n">Retrieval</p>
   <h2>I make them know things.</h2>
   <p>Document-grounded RAG over manuals, specifications and test records: hybrid BM25 plus dense search, re-ranking, and incremental ingestion so answers come with their sources.</p>
   <div class="chips"><i>FAISS</i><i>pgvector</i><i>Pinecone</i><i>LangChain</i><i>Docling</i></div>
 </div></section>
 
-<section class="st" id="s3"><div class="cap" style="--c:var(--s3)">
+<section class="st" id="s3" data-stage="3"><div class="cap" style="--c:var(--s3)">
   <p class="n">Agents</p>
   <h2>I give them tools.</h2>
   <p>LangGraph agents with ReAct and planner-executor patterns. Tools are secured MCP and REST endpoints, and sensitive actions wait for a human to approve.</p>
   <div class="chips"><i>LangGraph</i><i>MCP</i><i>FastAPI</i><i>Keycloak / OIDC</i></div>
 </div></section>
 
-<section class="st" id="s4"><div class="cap" style="--c:var(--s4)">
+<section class="st" id="s4" data-stage="4"><div class="cap" style="--c:var(--s4)">
   <p class="n">MLOps</p>
   <h2>I keep them honest.</h2>
   <p>A golden set blocks releases that regress answer quality. Drift is watched, retraining is triggered, and every release is a canary on a paper trail. The loop never stops.</p>
   <div class="chips"><i>RAGAS</i><i>MLflow</i><i>Kubernetes</i><i>Terraform</i><i>Grafana</i></div>
 </div></section>
 
-<section class="st" id="s5"><div class="cap" style="--c:var(--s5)">
+
+<section class="content" id="about" data-stage="5">
+  <div class="eh"><p class="n" style="--c:var(--s1)">About</p><h2>Evidence first, then ship.</h2></div>
+  <div class="panel about">
+    <div>
+      <p>I'm Asma, an applied AI engineer with four-plus years of building LLM systems that people can trust: retrieval-grounded assistants, tool-using agents, and the evaluation, deployment and monitoring that surround them.</p>
+      <p>At Teledyne I work on document-grounded RAG, agent tooling over MCP, and the guardrails that keep these systems safe in controlled-data environments. Before that I spent three years at Creative Newtech building an internal ML platform on Kubernetes, from pipelines and a model registry to release gates and drift monitoring.</p>
+      <p>I care about the unglamorous parts: golden test sets, release gates, drift alerts and runbooks. They are what turns a demo into a product.</p>
+    </div>
+    <dl>
+      <div><dt>Focus</dt><dd>Generative AI, agentic AI, ML engineering</dd></div>
+      <div><dt>Currently</dt><dd>Applied AI Engineer at Teledyne Technologies</dd></div>
+      <div><dt>Looking for</dt><dd>Roles building RAG, agent and ML systems that run in production</dd></div>
+      <div><dt>Studied</dt><dd>M.S. Computer and Information Science, Southern Arkansas University</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="content" id="experience" data-stage="5">
+  <div class="eh"><p class="n" style="--c:var(--s2)">Experience</p><h2>Where I've built.</h2></div>
+  <div class="jobs">
+    <article class="panel job">
+      <h3>Applied AI Engineer</h3>
+      <div class="meta"><b>Teledyne Technologies Inc</b><span>January 2025 – Present</span></div>
+      <p>At Teledyne I build production RAG pipelines over engineering manuals, product specifications and test records, using Docling and Unstructured for parsing, hybrid BM25 plus dense search with re-ranking, and incremental ingestion to keep indexes current. I designed and deployed agentic systems with LangGraph and MCP servers so engineers can query documentation and internal tools in natural language, with human approval for sensitive actions. An automated evaluation harness (RAGAS, DeepEval, Promptfoo, LLM-as-judge, trajectory and tool-use checks) runs in CI and blocks releases that regress answer quality against a curated golden set. I harden these applications for controlled-data environments with PII masking, prompt-injection defenses mapped to the OWASP LLM Top 10, NeMo Guardrails, Llama Guard and role-based retrieval access, and I serve and tune open-weight models (Llama, Qwen, Mistral) with vLLM on Kubernetes through KServe, fine-tuning task-specific models with LoRA and PEFT. I also implemented model routing, caching, rate limiting and fallbacks with per-request token and cost tracking, instrumented everything with OpenTelemetry, Langfuse, Prometheus and Grafana, and exposed agents and RAG services as secured REST and MCP endpoints with FastAPI, Pydantic and Keycloak/OIDC, deployed on Kubernetes.</p>
+    </article>
+    <article class="panel job">
+      <h3>MLOps / ML Platform Engineer</h3>
+      <div class="meta"><b>Creative Newtech Ltd</b><span>August 2020 – August 2023</span></div>
+      <p>At Creative Newtech I built and operated an internal ML platform on Kubernetes with MLflow tracking and registry, Kubeflow Pipelines and Airflow, giving data scientists a standard path from notebook to production. I productionized forecasting and recommendation models with scikit-learn and XGBoost, served through FastAPI and KServe to the company's B2B ordering platform, and automated model CI/CD with Docker, Helm, GitHub Actions and Jenkins, including release gates, baseline validation, and canary and shadow rollouts. I built Spark and Kafka data pipelines for sales, inventory and catalog data and introduced a feature store so training and serving used the same features. Model monitoring with drift detection (PSI and KS tests), Prometheus and Grafana triggered automated retraining, infrastructure was provisioned as code with Terraform on AWS (SageMaker, EKS, S3) with compute cost controlled through autoscaling and right-sizing, and inference was optimized with batching, caching and ONNX Runtime. I wrote runbooks so operations teams could support models without engineering escalation.</p>
+    </article>
+  </div>
+</section>
+
+<section class="content" id="projects" data-stage="5">
+  <div class="eh"><p class="n" style="--c:var(--s4)">Projects</p><h2>Selected work.</h2></div>
+  <div class="projs">
+    <article class="panel proj"><h3>LLM-Powered Customer Support Agent</h3>
+      <p>A retrieval-augmented support agent that answers from a large body of user documents. LangChain orchestrates semantic search over a Pinecone index, and compliance-focused prompt engineering keeps responses aligned with ethical AI and data-privacy standards.</p>
+      <div class="chips"><i>LangChain</i><i>Pinecone</i><i>RAG</i><i>Prompt engineering</i></div></article>
+    <article class="panel proj"><h3>Fraud Detection System</h3>
+      <p>A real-time fraud pipeline built on LLM ensembles. Pruning and quantization shrink the model for fast inference, and a Kubernetes auto-scaling serving layer with GPU-aware scheduling handles variable traffic. Experiments are tracked in MLflow.</p>
+      <div class="chips"><i>PyTorch</i><i>Hugging Face</i><i>MLflow</i><i>AWS</i><i>Kubernetes</i></div></article>
+    <article class="panel proj"><h3>E-Commerce Recommendation Classifier</h3>
+      <p>A collaborative filtering model over customer transaction data that proposes personalized product bundles, built for a consumer-packaged-goods client.</p>
+      <div class="chips"><i>Python</i><i>TensorFlow</i><i>Collaborative filtering</i></div></article>
+  </div>
+</section>
+
+<section class="content" id="skills" data-stage="5">
+  <div class="eh"><p class="n" style="--c:var(--s3)">Skills</p><h2>The toolbox.</h2></div>
+  <div class="panel sk">
+    <div><h3>LLMs, RAG and NLP</h3><p>OpenAI GPT-4 family, Mistral, Qwen, Llama, Hugging Face Transformers, LangChain, prompt engineering, structured outputs, hybrid search (BM25 + dense), re-ranking, Sentence-BERT, FAISS, Pinecone, pgvector, Docling, Unstructured, NER and summarization</p></div>
+    <div><h3>Agentic AI</h3><p>LangGraph, Model Context Protocol (MCP, FastMCP), tool and function calling, ReAct and planner-executor patterns, multi-agent orchestration, agent memory, human-in-the-loop approval</p></div>
+    <div><h3>Fine-tuning and training</h3><p>LoRA / PEFT, instruction tuning, DPO, RLHF, quantization, DeepSpeed / FSDP, PyTorch DDP, PyTorch Lightning, synthetic data, feature engineering</p></div>
+    <div><h3>ML and deep learning</h3><p>PyTorch, TensorFlow, Keras, scikit-learn, XGBoost, LightGBM, ONNX, vision-language models, model evaluation</p></div>
+    <div><h3>Evaluation and safety</h3><p>RAGAS, DeepEval, Promptfoo, LLM-as-judge, BLEU / ROUGE, trajectory and tool-use evaluation, red-teaming, OWASP LLM Top 10, NeMo Guardrails, Llama Guard, PII masking</p></div>
+    <div><h3>Data and MLOps</h3><p>MLflow, Kubeflow, Airflow, Spark, Kafka, Great Expectations, feature stores, DVC, KServe, vLLM, ONNX Runtime, FastAPI, Docker, Kubernetes, Helm, GitHub Actions, Argo CD, Jenkins</p></div>
+    <div><h3>Cloud and infrastructure</h3><p>AWS (SageMaker, Lambda, ECS, EKS, S3, Bedrock), Azure ML and Azure OpenAI, GCP Vertex AI, Terraform</p></div>
+    <div><h3>Monitoring and governance</h3><p>SHAP, LIME, drift detection (PSI, KS), Prometheus, Grafana, OpenTelemetry, Langfuse, model cards, responsible AI practices</p></div>
+    <div><h3>Languages and tools</h3><p>Python, SQL, TypeScript, Bash, Git, REST APIs, Jupyter, Power BI, Tableau</p></div>
+  </div>
+</section>
+
+<section class="content" id="education" data-stage="5">
+  <div class="eh"><p class="n" style="--c:var(--s0)">Education</p><h2>Foundations.</h2></div>
+  <div class="edu">
+    <article class="panel"><span class="tag">Master's</span><h3>M.S., Computer and Information Science</h3><p>Southern Arkansas University</p></article>
+    <article class="panel"><span class="tag">Bachelor's</span><h3>B.Tech, Computer Science and Engineering</h3><p>Jawaharlal Nehru Technological University Anantapur (JNTUA)</p></article>
+    <article class="panel"><span class="tag">Certifications</span><h3>AWS Certified Machine Learning – Specialty</h3><p>In progress. Also: Google Data Analytics Professional Certificate.</p></article>
+  </div>
+</section>
+
+<section class="st" id="s6" data-stage="6"><div class="cap" style="--c:var(--s5)">
   <p class="n">Contact</p>
   <h2>Have something that has to be right?</h2>
   <p>Open to GenAI, agentic AI and ML engineering roles.</p>
@@ -98,7 +197,7 @@ h2{font-size:clamp(34px,5vw,62px)}
 var cv=document.getElementById("cv"),ctx=cv.getContext("2d");
 var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
 var W,H,DPR,N,F=900;
-var COL=["#FF5A36","#5BE7C4","#FFD23F","#7C9CFF","#FF6AD5","#FFFFFF"];
+var COL=["#FF5A36","#5BE7C4","#FFD23F","#7C9CFF","#FF6AD5","#6F8CA8","#FFFFFF"];
 function hex(c){return [parseInt(c.substr(1,2),16),parseInt(c.substr(3,2),16),parseInt(c.substr(5,2),16)]}
 var RGB=COL.map(hex);
 function rnd(a,b){return a+Math.random()*(b-a)}
@@ -153,33 +252,40 @@ function loopPts(count){
   }
   return out;
 }
+function galaxy(count){
+  var out=[],i;
+  for(i=0;i<count;i++){var arm=i%3,r=Math.pow(Math.random(),.65)*2.2,a=r*1.9+arm*2.094+rnd(-.28,.28);out.push([Math.cos(a)*r,Math.sin(a)*r*.5,rnd(-.25,.25)*(1+r*.3)])}
+  return out;
+}
 /* ---- state ---- */
-var P,T=[],stage=0,rot=[0,.18,.22,.28,.3,0],scaleBy=[1,1,1,1,1,1],mouse={x:-9999,y:-9999},t0=performance.now(),col=RGB[0].slice();
+var P,T=[],stage=0,rot=[0,.18,.22,.28,.3,.05,0],scaleBy=[1,1,1,1,1,1],mouse={x:-9999,y:-9999},t0=performance.now(),col=RGB[0].slice();
 function layout(){
   DPR=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
 }
 function geom(){
   var narrow=W<760;
-  return {cx:narrow?W*.5:W*.68,cy:narrow?H*.34:H*.52,S:narrow?Math.min(W*.42,H*.26):Math.min(W*.3,H*.42)};
+  if(stage===5)return {cx:W*.5,cy:H*.5,S:Math.min(W*.42,H*.62)};
+  return {cx:narrow?W*.5:W*.68,cy:narrow?H*.27:H*.52,S:narrow?Math.min(W*.42,H*.26):Math.min(W*.3,H*.42)};
 }
 function build(){
   N=W<760?2400:4200;
-  T=[textPts(["ASMA","SHAIK"],N),netPts(N),sphere(N),orbits(N),loopPts(N),textPts(["LET'S","BUILD"],N)];
+  T=[textPts(["ASMA","SHAIK"],N),netPts(N),sphere(N),orbits(N),loopPts(N),galaxy(N),textPts(["LET'S","BUILD"],N)];
   // shuffle each target set so morphs are chaotic
   T.forEach(function(a){for(var i=a.length-1;i>0;i--){var j=(Math.random()*(i+1))|0,t=a[i];a[i]=a[j];a[j]=t}});
   P=[];for(var i=0;i<N;i++){var a=rnd(0,6.283),r=rnd(0,Math.max(W,H)*.6);P.push({x:Math.cos(a)*r,y:Math.sin(a)*r,z:rnd(-300,300),vx:0,vy:0,vz:0,w:Math.random()<.28,sx:0,sy:0})}
 }
 function setStage(i){
-  if(i===stage)return;stage=i;
+  if(i===stage)return;stage=i;cv.style.opacity=(i===5)?".3":"1";
   if(!reduce)P.forEach(function(p){p.vx+=rnd(-14,14);p.vy+=rnd(-14,14);p.vz+=rnd(-14,14)});
   [].forEach.call(document.getElementById("dots").children,function(b,k){b.setAttribute("aria-current",k===i?"true":"false")});
 }
-function onScroll(){var i=Math.round(scrollY/innerHeight);i=Math.max(0,Math.min(5,i));
-  var secs=document.querySelectorAll(".st"),best=0,bd=1e9;secs.forEach(function(s,k){var r=s.getBoundingClientRect(),d=Math.abs(r.top+r.height/2-innerHeight/2);if(d<bd){bd=d;best=k}});
+function onScroll(){
+  var secs=document.querySelectorAll("[data-stage]"),best=0,bd=1e9;secs.forEach(function(s){var r=s.getBoundingClientRect(),d=(r.top<innerHeight*.5&&r.bottom>innerHeight*.5)?0:Math.min(Math.abs(r.top-innerHeight*.5),Math.abs(r.bottom-innerHeight*.5));if(d<bd||(d===bd&&+s.dataset.stage>best)){bd=d;best=+s.dataset.stage}});
   setStage(best);document.getElementById("hint").style.opacity=scrollY>40?0:1}
 /* dots */
 var dots=document.getElementById("dots");
-["Name","Models","Retrieval","Agents","MLOps","Contact"].forEach(function(n,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label",n);b.setAttribute("aria-current",i===0?"true":"false");b.onclick=function(){document.getElementById("s"+i).scrollIntoView({behavior:reduce?"auto":"smooth"})};dots.appendChild(b)});
+var DOTID=["s0","s1","s2","s3","s4","about","s6"];
+["Name","Models","Retrieval","Agents","MLOps","About and work","Contact"].forEach(function(n,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label",n);b.setAttribute("aria-current",i===0?"true":"false");b.onclick=function(){document.getElementById(DOTID[i]).scrollIntoView({behavior:reduce?"auto":"smooth"})};dots.appendChild(b)});
 addEventListener("scroll",onScroll,{passive:true});
 addEventListener("pointermove",function(e){mouse.x=e.clientX;mouse.y=e.clientY});
 addEventListener("pointerleave",function(){mouse.x=mouse.y=-9999});
@@ -192,7 +298,7 @@ function frame(now){
   var tg=T[stage],cr=col[0]|0,cg=col[1]|0,cb=col[2]|0,cs="rgb("+cr+","+cg+","+cb+")",white="rgba(255,255,255,.9)";
   var mr=110,spring=reduce?.12:.04,damp=reduce?.7:.86,swob=reduce?0:Math.sin(t*.7)*.05;
   var cxs=g.cx,cys=g.cy,i,p,q,x,y,z,rx,rz,dx,dy,d,pr,sx,sy,sz;
-  var isText=(stage===0||stage===5);
+  var isText=(stage===0||stage===6);
   for(i=0;i<N;i++){
     p=P[i];q=tg[i];
     x=q[0]*S;y=q[1]*S;z=q[2]*S;
