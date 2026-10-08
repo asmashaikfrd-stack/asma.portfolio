@@ -1,0 +1,223 @@
+<title>Asma Shaik Particle Story</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Manrope:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: one fixed canvas holds ~4,000 particles that physically morph between shapes as you scroll: her name, a neural net, a knowledge sphere, an agent's tool orbits, a retraining loop, and finally "LET'S BUILD". Each full-screen section is the caption for the shape behind it. The cursor pushes particles away. Single deliberate dark look. */
+:root{
+  color-scheme:dark;
+  --bg:#07080B; --ink:#F2F4F7; --muted:#9AA3AE; --line:#232831;
+  --s0:#FF5A36; --s1:#5BE7C4; --s2:#FFD23F; --s3:#7C9CFF; --s4:#FF6AD5; --s5:#FFFFFF;
+  --display:"Syne","Arial Black",Arial,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--body);margin:0;padding-inline:clamp(18px,5vw,64px);padding-block:0}
+:focus-visible{outline:3px solid var(--s1);outline-offset:3px;border-radius:4px}
+#cv{position:fixed;inset:0;width:100vw;height:100vh;display:block;z-index:0}
+.top{position:fixed;left:0;right:0;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(18px,5vw,64px);font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;pointer-events:none}
+.top a{pointer-events:auto;color:var(--ink);text-decoration:none}
+.dots{position:fixed;right:clamp(10px,2vw,26px);top:50%;transform:translateY(-50%);z-index:5;display:flex;flex-direction:column;gap:12px}
+.dots button{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--muted);background:transparent;padding:0;cursor:pointer}
+.dots button[aria-current="true"]{background:var(--ink);border-color:var(--ink);transform:scale(1.25)}
+.hint{position:fixed;left:clamp(18px,5vw,64px);bottom:18px;z-index:5;font:400 12px var(--mono);color:var(--muted);letter-spacing:.08em;pointer-events:none}
+main{position:relative;z-index:2;max-width:1280px;margin-inline:auto}
+.st{min-height:100vh;display:flex;align-items:center;padding-block:90px}
+.cap{max-width:min(440px,100%)}
+.n{font:500 13px var(--mono);letter-spacing:.16em;text-transform:uppercase;margin:0 0 16px;color:var(--c,var(--ink))}
+h1,h2{font-family:var(--display);font-weight:800;margin:0;line-height:.98;letter-spacing:-.035em;text-wrap:balance;text-shadow:0 2px 24px rgba(7,8,11,.9)}
+h1{font-size:clamp(34px,5.4vw,66px)}
+h2{font-size:clamp(34px,5vw,62px)}
+.cap p{color:#C4CBD4;margin:20px 0 0;text-shadow:0 1px 14px rgba(7,8,11,.95)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips i{font:400 13px var(--mono);font-style:normal;padding:6px 11px;border:1px solid #3A424E;border-radius:999px;background:rgba(7,8,11,.55)}
+.btn{font:700 15px var(--body);padding:14px 24px;border-radius:999px;border:0;background:var(--s5);color:#07080B;cursor:pointer}
+.btn:hover{background:var(--s1)}
+.mailrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:22px}
+.mail{font:500 clamp(16px,2.4vw,22px) var(--mono);user-select:all;word-break:break-all}
+.note{font:400 13px var(--mono);color:var(--s1)}
+.facts{margin-top:22px;font:400 13.5px/1.9 var(--mono);color:var(--muted)} .facts b{color:var(--ink);font-weight:500}
+@media (max-width:760px){
+  .st{align-items:flex-end;padding-block:24px 84px}
+  .cap{background:linear-gradient(transparent,rgba(7,8,11,.85) 30%);padding-top:36px;max-width:100%}
+  .hint{display:none}.dots{display:none}
+}
+</style>
+
+<canvas id="cv" aria-hidden="true"></canvas>
+<div class="top"><a href="#s0">Asmadunnisa Begum Shaik</a><span style="color:var(--muted)">Applied AI Engineer</span></div>
+<nav class="dots" id="dots" aria-label="Story"></nav>
+<div class="hint" id="hint">scroll · move your cursor through the particles</div>
+
+<main>
+<section class="st" id="s0"><div class="cap" style="--c:var(--s0)">
+  <p class="n">Asma Shaik</p>
+  <h1>I build AI that answers from evidence.</h1>
+  <p>Applied AI Engineer working on RAG, agents and the MLOps behind them. Everything behind this text is made of particles. Scroll and watch them rebuild into the work.</p>
+</div></section>
+
+<section class="st" id="s1"><div class="cap" style="--c:var(--s1)">
+  <p class="n">Models</p>
+  <h2>I build and tune models.</h2>
+  <p>Fine-tuning with LoRA and PEFT, PyTorch training, and the feature and training pipelines that make a result reproducible instead of lucky.</p>
+  <div class="chips"><i>PyTorch</i><i>LoRA / PEFT</i><i>Hugging Face</i><i>scikit-learn</i><i>XGBoost</i></div>
+</div></section>
+
+<section class="st" id="s2"><div class="cap" style="--c:var(--s2)">
+  <p class="n">Retrieval</p>
+  <h2>I make them know things.</h2>
+  <p>Document-grounded RAG over manuals, specifications and test records: hybrid BM25 plus dense search, re-ranking, and incremental ingestion so answers come with their sources.</p>
+  <div class="chips"><i>FAISS</i><i>pgvector</i><i>Pinecone</i><i>LangChain</i><i>Docling</i></div>
+</div></section>
+
+<section class="st" id="s3"><div class="cap" style="--c:var(--s3)">
+  <p class="n">Agents</p>
+  <h2>I give them tools.</h2>
+  <p>LangGraph agents with ReAct and planner-executor patterns. Tools are secured MCP and REST endpoints, and sensitive actions wait for a human to approve.</p>
+  <div class="chips"><i>LangGraph</i><i>MCP</i><i>FastAPI</i><i>Keycloak / OIDC</i></div>
+</div></section>
+
+<section class="st" id="s4"><div class="cap" style="--c:var(--s4)">
+  <p class="n">MLOps</p>
+  <h2>I keep them honest.</h2>
+  <p>A golden set blocks releases that regress answer quality. Drift is watched, retraining is triggered, and every release is a canary on a paper trail. The loop never stops.</p>
+  <div class="chips"><i>RAGAS</i><i>MLflow</i><i>Kubernetes</i><i>Terraform</i><i>Grafana</i></div>
+</div></section>
+
+<section class="st" id="s5"><div class="cap" style="--c:var(--s5)">
+  <p class="n">Contact</p>
+  <h2>Have something that has to be right?</h2>
+  <p>Open to GenAI, agentic AI and ML engineering roles.</p>
+  <div class="mailrow"><span class="mail" id="mail">asmashaik.frd@gmail.com</span><button class="btn" id="copy" type="button">Copy email</button><span class="note" id="note" aria-live="polite"></span></div>
+  <div class="facts"><b>Teledyne Technologies</b> Applied AI Engineer, Jan 2025 – now<br><b>Creative Newtech</b> MLOps / ML Platform Engineer, Aug 2020 – Aug 2023<br><b>M.S.</b> Computer and Information Science, Southern Arkansas University<br><b>B.Tech</b> CSE, JNTUA · AWS ML Specialty in progress</div>
+</div></section>
+</main>
+
+<script>
+(function(){
+var cv=document.getElementById("cv"),ctx=cv.getContext("2d");
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W,H,DPR,N,F=900;
+var COL=["#FF5A36","#5BE7C4","#FFD23F","#7C9CFF","#FF6AD5","#FFFFFF"];
+function hex(c){return [parseInt(c.substr(1,2),16),parseInt(c.substr(3,2),16),parseInt(c.substr(5,2),16)]}
+var RGB=COL.map(hex);
+function rnd(a,b){return a+Math.random()*(b-a)}
+/* ---- shape generators: return array of [x,y,z] in roughly [-1,1] ---- */
+function textPts(lines,count){
+  var c=document.createElement("canvas"),cx=c.getContext("2d"),fs=170,lh=fs*1.0;
+  c.width=1400;c.height=Math.ceil(lines.length*lh+60);
+  cx.fillStyle="#fff";cx.font="800 "+fs+"px Syne, 'Arial Black', Arial, sans-serif";cx.textAlign="center";cx.textBaseline="middle";
+  lines.forEach(function(t,i){cx.fillText(t,c.width/2,40+lh*(i+.5))});
+  var d=cx.getImageData(0,0,c.width,c.height).data,pts=[],x,y,minx=1e9,maxx=-1e9,miny=1e9,maxy=-1e9;
+  for(y=0;y<c.height;y+=4)for(x=0;x<c.width;x+=4){if(d[(y*c.width+x)*4+3]>128){pts.push([x,y]);if(x<minx)minx=x;if(x>maxx)maxx=x;if(y<miny)miny=y;if(y>maxy)maxy=y}}
+  var s=(maxx-minx)/2||1,cxm=(minx+maxx)/2,cym=(miny+maxy)/2,out=[];
+  if(!pts.length)return sphere(count);
+  for(var i=0;i<count;i++){var p=pts[(Math.random()*pts.length)|0];out.push([(p[0]-cxm+rnd(-2,2))/s,(p[1]-cym+rnd(-2,2))/s,rnd(-.04,.04)])}
+  return out;
+}
+function netPts(count){
+  var layers=[4,6,6,3],nodes=[],i,j,l,out=[];
+  layers.forEach(function(n,li){for(i=0;i<n;i++)nodes.push({l:li,x:-1+li*(2/(layers.length-1)),y:(i-(n-1)/2)*(1.5/Math.max(n-1,5)*1.25),z:rnd(-.25,.25)})});
+  var edges=[];nodes.forEach(function(a){nodes.forEach(function(b){if(b.l===a.l+1)edges.push([a,b])})});
+  for(i=0;i<count;i++){
+    if(Math.random()<.32){var n=nodes[(Math.random()*nodes.length)|0],a=Math.random()*6.283,r=Math.sqrt(Math.random())*.075;out.push([n.x+Math.cos(a)*r,n.y+Math.sin(a)*r,n.z+rnd(-.03,.03)])}
+    else{var e=edges[(Math.random()*edges.length)|0],t=Math.random();out.push([e[0].x+(e[1].x-e[0].x)*t,e[0].y+(e[1].y-e[0].y)*t+rnd(-.008,.008),e[0].z+(e[1].z-e[0].z)*t])}
+  }
+  return out;
+}
+function sphere(count){
+  var out=[],i,ga=Math.PI*(3-Math.sqrt(5));
+  for(i=0;i<count;i++){
+    if(i%6===0){var a=rnd(0,6.283);out.push([Math.cos(a)*1.1,rnd(-.03,.03),Math.sin(a)*1.1]);continue}
+    var y=1-(i/(count-1))*2,r=Math.sqrt(1-y*y),th=ga*i;out.push([Math.cos(th)*r*.95,y*.95,Math.sin(th)*r*.95]);
+  }
+  return out;
+}
+function orbits(count){
+  var out=[],i;
+  for(i=0;i<count;i++){
+    if(i%9===0){var a=Math.random()*6.283,r=Math.pow(Math.random(),.5)*.22;out.push([Math.cos(a)*r,Math.sin(a)*r,rnd(-.1,.1)]);continue}
+    var k=i%3,a2=rnd(0,6.283),R=.6+k*.28,x=Math.cos(a2)*R,y=Math.sin(a2)*R,z=rnd(-.02,.02);
+    var tilt=[.3,1.1,-.8][k],c=Math.cos(tilt),s=Math.sin(tilt);
+    out.push([x,y*c-z*s,y*s+z*c]);
+    if(i%27===1){out[out.length-1]=[x*1.0,y*c,y*s];}
+  }
+  return out;
+}
+function loopPts(count){
+  var out=[],i;
+  for(i=0;i<count;i++){
+    var t=Math.random()*6.2832,den=1+Math.sin(t)*Math.sin(t),x=1.25*Math.cos(t)/den,y=1.25*Math.sin(t)*Math.cos(t)/den*1.4,w=rnd(-1,1);
+    var nx=-Math.sin(t),ny=Math.cos(t);
+    out.push([x+nx*w*.06,y+ny*w*.06,Math.sin(t*2)*.35+rnd(-.04,.04)]);
+  }
+  return out;
+}
+/* ---- state ---- */
+var P,T=[],stage=0,rot=[0,.18,.22,.28,.3,0],scaleBy=[1,1,1,1,1,1],mouse={x:-9999,y:-9999},t0=performance.now(),col=RGB[0].slice();
+function layout(){
+  DPR=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+}
+function geom(){
+  var narrow=W<760;
+  return {cx:narrow?W*.5:W*.68,cy:narrow?H*.34:H*.52,S:narrow?Math.min(W*.42,H*.26):Math.min(W*.3,H*.42)};
+}
+function build(){
+  N=W<760?2400:4200;
+  T=[textPts(["ASMA","SHAIK"],N),netPts(N),sphere(N),orbits(N),loopPts(N),textPts(["LET'S","BUILD"],N)];
+  // shuffle each target set so morphs are chaotic
+  T.forEach(function(a){for(var i=a.length-1;i>0;i--){var j=(Math.random()*(i+1))|0,t=a[i];a[i]=a[j];a[j]=t}});
+  P=[];for(var i=0;i<N;i++){var a=rnd(0,6.283),r=rnd(0,Math.max(W,H)*.6);P.push({x:Math.cos(a)*r,y:Math.sin(a)*r,z:rnd(-300,300),vx:0,vy:0,vz:0,w:Math.random()<.28,sx:0,sy:0})}
+}
+function setStage(i){
+  if(i===stage)return;stage=i;
+  if(!reduce)P.forEach(function(p){p.vx+=rnd(-14,14);p.vy+=rnd(-14,14);p.vz+=rnd(-14,14)});
+  [].forEach.call(document.getElementById("dots").children,function(b,k){b.setAttribute("aria-current",k===i?"true":"false")});
+}
+function onScroll(){var i=Math.round(scrollY/innerHeight);i=Math.max(0,Math.min(5,i));
+  var secs=document.querySelectorAll(".st"),best=0,bd=1e9;secs.forEach(function(s,k){var r=s.getBoundingClientRect(),d=Math.abs(r.top+r.height/2-innerHeight/2);if(d<bd){bd=d;best=k}});
+  setStage(best);document.getElementById("hint").style.opacity=scrollY>40?0:1}
+/* dots */
+var dots=document.getElementById("dots");
+["Name","Models","Retrieval","Agents","MLOps","Contact"].forEach(function(n,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label",n);b.setAttribute("aria-current",i===0?"true":"false");b.onclick=function(){document.getElementById("s"+i).scrollIntoView({behavior:reduce?"auto":"smooth"})};dots.appendChild(b)});
+addEventListener("scroll",onScroll,{passive:true});
+addEventListener("pointermove",function(e){mouse.x=e.clientX;mouse.y=e.clientY});
+addEventListener("pointerleave",function(){mouse.x=mouse.y=-9999});
+var tmr;addEventListener("resize",function(){clearTimeout(tmr);tmr=setTimeout(function(){layout();build()},200)});
+function frame(now){
+  requestAnimationFrame(frame);if(document.hidden)return;
+  var g=geom(),S=g.S,t=(now-t0)/1000,ang=reduce?0:((stage===1||stage===4)?Math.sin(t*.45)*.55:t*rot[stage]),ca=Math.cos(ang),sa=Math.sin(ang);
+  var tc=RGB[stage];for(var k=0;k<3;k++)col[k]+=(tc[k]-col[k])*.05;
+  if(reduce){ctx.fillStyle="#07080B";ctx.fillRect(0,0,W,H)}else{ctx.fillStyle="rgba(7,8,11,.26)";ctx.fillRect(0,0,W,H)}
+  var tg=T[stage],cr=col[0]|0,cg=col[1]|0,cb=col[2]|0,cs="rgb("+cr+","+cg+","+cb+")",white="rgba(255,255,255,.9)";
+  var mr=110,spring=reduce?.12:.04,damp=reduce?.7:.86,swob=reduce?0:Math.sin(t*.7)*.05;
+  var cxs=g.cx,cys=g.cy,i,p,q,x,y,z,rx,rz,dx,dy,d,pr,sx,sy,sz;
+  var isText=(stage===0||stage===5);
+  for(i=0;i<N;i++){
+    p=P[i];q=tg[i];
+    x=q[0]*S;y=q[1]*S;z=q[2]*S;
+    if(!isText){rx=x*ca+z*sa;rz=-x*sa+z*ca;x=rx;z=rz}
+    else{y+=Math.sin(t*1.2+q[0]*3)*2*(reduce?0:1)}
+    p.vx+=(x-p.x)*spring;p.vy+=(y-p.y)*spring;p.vz+=(z-p.z)*spring;
+    // mouse push in screen space
+    if(!reduce){dx=p.sx-mouse.x;dy=p.sy-mouse.y;d=dx*dx+dy*dy;if(d<mr*mr&&d>1){var dd=Math.sqrt(d),f=(1-dd/mr)*4.2;p.vx+=dx/dd*f;p.vy+=dy/dd*f}}
+    p.vx*=damp;p.vy*=damp;p.vz*=damp;p.x+=p.vx;p.y+=p.vy;p.z+=p.vz;
+    pr=F/(F+p.z);sx=cxs+p.x*pr;sy=cys+p.y*pr;p.sx=sx;p.sy=sy;
+    sz=Math.max(.8,1.9*pr);
+    ctx.fillStyle=p.w?white:cs;
+    ctx.fillRect(sx,sy,sz,sz);
+  }
+}
+function start(){layout();build();onScroll();requestAnimationFrame(frame)}
+var started=false;function go(){if(started)return;started=true;start()}
+if(document.fonts&&document.fonts.load){Promise.race([document.fonts.load("800 100px Syne"),new Promise(function(r){setTimeout(r,1800)})]).then(go,go)}else go();
+setTimeout(go,2200);
+/* copy */
+var note=document.getElementById("note");
+document.getElementById("copy").onclick=function(){
+  var m=document.getElementById("mail").textContent;
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById("mail"));var s=getSelection();s.removeAllRanges();s.addRange(r);note.textContent="Press Ctrl/Cmd+C to copy"}
+  try{navigator.clipboard.writeText(m).then(function(){note.textContent="Copied"},sel)}catch(e){sel()}
+};
+})();
+</script>
